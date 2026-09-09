@@ -797,6 +797,71 @@
       gap: 7px;
     }
 
+    .project-img {
+      width: calc(100% + 60px);
+      margin: -30px -30px 24px -30px;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-img-row {
+      width: calc(100% + 60px);
+      margin: -30px -30px 24px -30px;
+      display: flex;
+      gap: 2px;
+    }
+
+    .project-img-row img {
+      flex: 1;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+      transition: filter 0.25s ease;
+    }
+
+    .project-img-row img:hover {
+      filter: brightness(1.08);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(6, 8, 12, 0.92);
+      cursor: zoom-out;
+      padding: 40px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 30px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--ink);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      padding: 8px 14px;
+      cursor: pointer;
+    }
+
     .project-link {
       margin-top: 18px;
       display: inline-flex;
@@ -1705,7 +1770,7 @@
 
         <div class="section-head reveal">
           <span class="section-num">03</span>
-          <h2>Selected Projects</h2>
+          <h2>Projects</h2>
           <span class="section-line"></span>
         </div>
 
@@ -1781,6 +1846,102 @@
               <span>Text-to-Speech</span>
               <span>Accessibility</span>
               <span>Frontend</span>
+            </div>
+
+          </article>
+
+          <article class="project reveal">
+
+            <div class="project-img-row">
+              <img
+                src="assets/ai-classifier.jpg"
+                alt="AI vs Real Image Classifier upload screen"
+              />
+              <img
+                src="assets/ai-classifier-history.jpg"
+                alt="AI vs Real Image Classifier prediction history table"
+              />
+            </div>
+
+            <div class="project-number">
+              PROJECT / 03
+            </div>
+
+            <div class="project-title">
+              AI vs Real Image Classifier
+            </div>
+
+            <div class="project-role">
+              Full-Stack AI Developer
+            </div>
+
+            <p>
+              A Django web app that uses a trained CNN model to detect
+              whether an uploaded image is AI-generated or real. Upload
+              any image through the web interface and the model returns
+              a prediction with a confidence score. Tracks each
+              prediction through processing states (pending →
+              finished/failed) and stores a full history of past
+              predictions and their statuses.
+            </p>
+
+            <div class="stack">
+              <span>Django</span>
+              <span>PyTorch</span>
+              <span>CNN</span>
+              <span>Python</span>
+            </div>
+
+            <a
+              class="project-link"
+              href="https://github.com/BatoolAshour/Django-AI-Website"
+              target="_blank"
+              rel="noopener"
+            >
+              View on GitHub ↗︎
+            </a>
+
+          </article>
+
+          <article class="project reveal">
+
+            <div class="project-img-row">
+              <img
+                src="assets/hazza-rover.jpg"
+                alt="Hazza LEGO SPIKE Prime solar panel cleaning rover"
+              />
+              <img
+                src="assets/hazza-poster.jpg"
+                alt="Hazza project research poster summary"
+              />
+            </div>
+
+            <div class="project-number">
+              PROJECT / 04
+            </div>
+
+            <div class="project-title">
+              Hazza — Solar Panel Cleaning Rover
+            </div>
+
+            <div class="project-role">
+              Robotics Developer
+            </div>
+
+            <p>
+              An autonomous LEGO SPIKE Prime rover designed to detect
+              and clean dust from solar panels. Using color sensors,
+              distance sensing and a lifting brush mechanism, the rover
+              navigates between panels, inspects their status and
+              performs cleaning without human intervention — built to
+              improve solar panel efficiency in desert conditions.
+            </p>
+
+            <div class="stack">
+              <span>LEGO SPIKE Prime</span>
+              <span>Python</span>
+              <span>Robotics</span>
+              <span>Sensors</span>
             </div>
 
           </article>
@@ -2184,6 +2345,11 @@
 
   </footer>
 
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">Close ✕</button>
+    <img id="lightboxImg" src="" alt="Enlarged project image" />
+  </div>
+
   <script>
     /* ========================================
        SCROLL REVEAL
@@ -2333,6 +2499,34 @@
       });
 
     }
+
+    // ===== Lightbox for project images =====
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    document.querySelectorAll(".project-img-row img").forEach((img) => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add("active");
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+      lightboxImg.src = "";
+    }
+
+    lightboxClose.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
+    });
   </script>
 
 </body>
