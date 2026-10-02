@@ -1,2533 +1,869 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Batool Ashour — AI Engineer</title>
   <meta
     name="description"
-    content="Batool Ashour — AI Engineer specializing in machine learning, computer vision, RAG systems, APIs, and end-to-end AI development."
+    content="Batool Ashour — AI Engineer building machine learning, computer vision and RAG-powered systems, from raw data and model development to APIs and working applications."
   />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- Devicon for technology logos -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-  />
-
-  <style>
-    :root {
-      --bg: #08131f;
-      --bg-2: #0c1b2b;
-      --card: rgba(18, 39, 62, 0.72);
-      --card-solid: #10243a;
-      --ink: #f3f5f1;
-      --ink-dim: #9fb0c3;
-      --line: rgba(122, 154, 184, 0.18);
-      --gold: #e8b04b;
-      --gold-light: #ffd681;
-      --gold-dim: #b98b39;
-      --green: #78dba9;
-      --font-head: "Space Grotesk", sans-serif;
-      --font-body: "Inter", sans-serif;
-      --font-mono: "IBM Plex Mono", monospace;
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 90px;
-    }
-
-    body {
-      background:
-        radial-gradient(circle at 15% 10%, rgba(232, 176, 75, 0.08), transparent 25%),
-        radial-gradient(circle at 85% 25%, rgba(71, 130, 190, 0.08), transparent 28%),
-        var(--bg);
-      color: var(--ink);
-      font-family: var(--font-body);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    ::selection {
-      background: var(--gold);
-      color: var(--bg);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input,
-    textarea {
-      font: inherit;
-    }
-
-    a:focus-visible,
-    button:focus-visible,
-    input:focus-visible,
-    textarea:focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 3px;
-    }
-
-    .wrap {
-      width: min(1120px, calc(100% - 48px));
-      margin: 0 auto;
-    }
-
-    /* ========================================
-       BACKGROUND DECORATION
-    ======================================== */
-
-    .page-grid {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -2;
-      opacity: 0.16;
-      background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-      background-size: 58px 58px;
-      mask-image: linear-gradient(to bottom, black, transparent 85%);
-    }
-
-    .orb {
-      position: fixed;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      filter: blur(110px);
-      opacity: 0.08;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .orb-one {
-      background: var(--gold);
-      top: 0;
-      right: -160px;
-      animation: orbMove 13s ease-in-out infinite alternate;
-    }
-
-    .orb-two {
-      background: #4f9bd8;
-      bottom: 10%;
-      left: -180px;
-      animation: orbMove 16s ease-in-out infinite alternate-reverse;
-    }
-
-    @keyframes orbMove {
-      from { transform: translate3d(0, 0, 0); }
-      to { transform: translate3d(-45px, 60px, 0); }
-    }
-
-    /* ========================================
-       NAVIGATION
-    ======================================== */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(8, 19, 31, 0.72);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    nav.wrap {
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: 1.08rem;
-      letter-spacing: -0.02em;
-    }
-
-    .brand span {
-      color: var(--gold);
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 26px;
-      font-size: 0.88rem;
-      color: var(--ink-dim);
-    }
-
-    .nav-links a {
-      position: relative;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -7px;
-      width: 0;
-      height: 1px;
-      background: var(--gold);
-      transition: width 0.25s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--ink);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-status {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--green);
-      border: 1px solid rgba(120, 219, 169, 0.2);
-      background: rgba(120, 219, 169, 0.05);
-      padding: 7px 11px;
-      border-radius: 999px;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      background: var(--green);
-      border-radius: 50%;
-      box-shadow: 0 0 0 4px rgba(120, 219, 169, 0.09);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        box-shadow: 0 0 0 4px rgba(120, 219, 169, 0.08);
-      }
-      50% {
-        box-shadow: 0 0 0 8px rgba(120, 219, 169, 0);
-      }
-    }
-
-    /* ========================================
-       HERO
-    ======================================== */
-
-    .hero {
-      min-height: calc(100vh - 72px);
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      align-items: center;
-      gap: 70px;
-      padding-top: 80px;
-      padding-bottom: 90px;
-    }
-
-    .hero-content {
-      animation: heroEnter 0.8s ease both;
-    }
-
-    @keyframes heroEnter {
-      from {
-        opacity: 0;
-        transform: translateY(22px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero-tag {
-      width: fit-content;
-      font-family: var(--font-mono);
-      color: var(--green);
-      font-size: 0.78rem;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid rgba(120, 219, 169, 0.18);
-      background: rgba(120, 219, 169, 0.04);
-      padding: 8px 13px;
-      border-radius: 999px;
-    }
-
-    .hero-tag::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      animation: pulse 2s infinite;
-    }
-
-    .hero-eyebrow {
-      font-family: var(--font-mono);
-      color: var(--gold);
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-
-    .hero-title {
-      font-family: var(--font-head);
-      font-weight: 600;
-      font-size: clamp(3rem, 6.4vw, 5.3rem);
-      line-height: 0.99;
-      letter-spacing: -0.055em;
-      max-width: 10ch;
-    }
-
-    .hero-title .accent {
-      color: var(--gold);
-    }
-
-    .hero-sub {
-      margin-top: 27px;
-      max-width: 660px;
-      color: var(--ink-dim);
-      font-size: 1.08rem;
-      line-height: 1.8;
-    }
-
-    .hero-sub strong {
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    .hero-links {
-      margin-top: 34px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      font-size: 0.88rem;
-      font-weight: 500;
-      padding: 12px 19px;
-      border-radius: 7px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.015);
-      transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        background 0.2s ease,
-        color 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      border-color: rgba(232, 176, 75, 0.55);
-      color: var(--gold-light);
-    }
-
-    .btn.primary {
-      background: var(--gold);
-      color: var(--bg);
-      border-color: var(--gold);
-      font-weight: 600;
-    }
-
-    .btn.primary:hover {
-      background: var(--gold-light);
-      color: var(--bg);
-      box-shadow: 0 10px 30px rgba(232, 176, 75, 0.15);
-    }
-
-    /* Hero terminal */
-
-    .hero-visual {
-      position: relative;
-      animation: visualEnter 0.9s 0.15s ease both;
-    }
-
-    @keyframes visualEnter {
-      from {
-        opacity: 0;
-        transform: translateX(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .terminal {
-      background: rgba(12, 27, 43, 0.78);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-      transform: perspective(1000px) rotateY(-3deg) rotateX(1deg);
-      transition: transform 0.4s ease;
-    }
-
-    .terminal:hover {
-      transform: perspective(1000px) rotateY(0) rotateX(0) translateY(-5px);
-    }
-
-    .terminal-top {
-      height: 42px;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 0 15px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .terminal-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--line);
-    }
-
-    .terminal-dot:nth-child(1) { background: #e37c76; }
-    .terminal-dot:nth-child(2) { background: #e8b04b; }
-    .terminal-dot:nth-child(3) { background: #78dba9; }
-
-    .terminal-body {
-      padding: 24px;
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      line-height: 2;
-      color: var(--ink-dim);
-    }
-
-    .code-key { color: #c792ea; }
-    .code-string { color: #c3e88d; }
-    .code-value { color: var(--gold-light); }
-    .code-comment { color: #60788e; }
-
-    .cursor {
-      display: inline-block;
-      width: 7px;
-      height: 14px;
-      background: var(--gold);
-      vertical-align: middle;
-      animation: blink 1s steps(2) infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    .floating-card {
-      position: absolute;
-      right: -25px;
-      bottom: -38px;
-      width: 210px;
-      padding: 16px;
-      border-radius: 10px;
-      background: rgba(16, 36, 58, 0.95);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .floating-label {
-      font-family: var(--font-mono);
-      color: var(--ink-dim);
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .floating-value {
-      margin-top: 5px;
-      font-family: var(--font-head);
-      font-size: 0.9rem;
-      color: var(--green);
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    /* ========================================
-       TECH MARQUEE
-    ======================================== */
-
-    .tech-strip {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      overflow: hidden;
-      background: rgba(255,255,255,0.012);
-    }
-
-    .tech-track {
-      width: max-content;
-      display: flex;
-      align-items: center;
-      gap: 52px;
-      padding: 24px 0;
-      animation: marquee 28s linear infinite;
-    }
-
-    .tech-track:hover {
-      animation-play-state: paused;
-    }
-
-    .tech-item {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      white-space: nowrap;
-      color: var(--ink-dim);
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-    }
-
-    .tech-item i {
-      font-size: 2rem;
-      color: var(--ink);
-    }
-
-    /* Some Devicon logos (e.g. GitHub) are solid black and disappear
-       against this dark background — flip them so they stay visible. */
-    .devicon-github-original {
-      filter: invert(1) brightness(1.7);
-    }
-
-    @keyframes marquee {
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    /* ========================================
-       GENERAL SECTIONS
-    ======================================== */
-
-    section.content-section {
-      padding: 105px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section-head {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 50px;
-    }
-
-    .section-num {
-      font-family: var(--font-mono);
-      color: var(--gold);
-      font-size: 0.76rem;
-    }
-
-    h2 {
-      font-family: var(--font-head);
-      font-weight: 600;
-      font-size: clamp(1.7rem, 3vw, 2.2rem);
-      letter-spacing: -0.03em;
-    }
-
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background: var(--line);
-      margin-left: 10px;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ========================================
-       WHAT I BUILD
-    ======================================== */
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-
-    .service-card {
-      position: relative;
-      min-height: 235px;
-      padding: 25px;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      overflow: hidden;
-      transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        background 0.3s ease;
-    }
-
-    .service-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        circle at top right,
-        rgba(232,176,75,.1),
-        transparent 45%
-      );
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-7px);
-      border-color: rgba(232, 176, 75, 0.38);
-      background: rgba(18, 39, 62, 0.95);
-    }
-
-    .service-card:hover::before {
-      opacity: 1;
-    }
-
-    .service-icon {
-      position: relative;
-      width: 46px;
-      height: 46px;
-      display: grid;
-      place-items: center;
-      border-radius: 9px;
-      border: 1px solid rgba(232,176,75,.22);
-      color: var(--gold);
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      margin-bottom: 28px;
-      background: rgba(232,176,75,.05);
-    }
-
-    .service-card h3 {
-      position: relative;
-      font-family: var(--font-head);
-      font-size: 1rem;
-      margin-bottom: 10px;
-    }
-
-    .service-card p {
-      position: relative;
-      color: var(--ink-dim);
-      font-size: 0.87rem;
-      line-height: 1.7;
-    }
-
-    /* ========================================
-       EXPERIENCE
-    ======================================== */
-
-    .experience-card {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 26px;
-      padding: 32px;
-      border-radius: 14px;
-      background: var(--card);
-      border: 1px solid var(--line);
-      transition:
-        transform 0.3s ease,
-        border-color 0.3s ease;
-    }
-
-    .experience-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(232,176,75,.35);
-    }
-
-    .stage-role {
-      font-family: var(--font-head);
-      font-size: 1.22rem;
-      font-weight: 600;
-      line-height: 1.4;
-    }
-
-    .stage-meta {
-      font-family: var(--font-mono);
-      font-size: 0.76rem;
-      color: var(--gold);
-      margin-top: 7px;
-    }
-
-    .experience-card ul {
-      margin-top: 21px;
-      padding-left: 18px;
-      color: var(--ink-dim);
-      font-size: 0.92rem;
-    }
-
-    .experience-card li {
-      margin-bottom: 10px;
-    }
-
-    .experience-card li::marker {
-      color: var(--gold);
-    }
-
-    /* ========================================
-       PROJECTS
-    ======================================== */
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .project {
-      position: relative;
-      min-height: 390px;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-    }
-
-    .project::after {
-      content: "";
-      position: absolute;
-      width: 190px;
-      height: 190px;
-      border-radius: 50%;
-      right: -90px;
-      top: -90px;
-      background: rgba(232,176,75,.07);
-      filter: blur(10px);
-      transition: transform 0.4s ease;
-    }
-
-    .project:hover {
-      transform: translateY(-7px);
-      border-color: rgba(232,176,75,.38);
-      box-shadow: var(--shadow);
-    }
-
-    .project:hover::after {
-      transform: scale(1.5);
-    }
-
-    .project-number {
-      font-family: var(--font-mono);
-      color: var(--gold);
-      font-size: 0.72rem;
-      margin-bottom: 32px;
-    }
-
-    .project-title {
-      font-family: var(--font-head);
-      font-weight: 600;
-      font-size: 1.3rem;
-      letter-spacing: -0.02em;
-    }
-
-    .project-role {
-      margin-top: 6px;
-      font-family: var(--font-mono);
-      font-size: 0.73rem;
-      color: var(--gold);
-    }
-
-    .project p {
-      color: var(--ink-dim);
-      margin-top: 18px;
-      font-size: 0.9rem;
-      line-height: 1.75;
-    }
-
-    .stack {
-      margin-top: auto;
-      padding-top: 24px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-
-    .project-img {
-      width: calc(100% + 60px);
-      margin: -30px -30px 24px -30px;
-      height: 190px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .project-img-row {
-      width: calc(100% + 60px);
-      margin: -30px -30px 24px -30px;
-      display: flex;
-      gap: 2px;
-    }
-
-    .project-img-row img {
-      flex: 1;
-      height: 190px;
-      object-fit: cover;
-      display: block;
-      cursor: zoom-in;
-      transition: filter 0.25s ease;
-    }
-
-    .project-img-row img:hover {
-      filter: brightness(1.08);
-    }
-
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background: rgba(6, 8, 12, 0.92);
-      cursor: zoom-out;
-      padding: 40px;
-    }
-
-    .lightbox.active {
-      display: flex;
-    }
-
-    .lightbox img {
-      max-width: 100%;
-      max-height: 100%;
-      border-radius: 8px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.5);
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 24px;
-      right: 30px;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: var(--ink);
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 8px;
-      padding: 8px 14px;
-      cursor: pointer;
-    }
-
-    .project-link {
-      margin-top: 18px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--gold);
-      text-decoration: none;
-      transition: opacity .25s ease;
-    }
-
-    .project-link:hover { opacity: 0.7; }
-
-    .stack span {
-      font-family: var(--font-mono);
-      font-size: 0.69rem;
-      color: var(--ink-dim);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      padding: 5px 9px;
-      border-radius: 5px;
-    }
-
-    /* ========================================
-       SKILLS
-    ======================================== */
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .skill-group {
-      padding: 28px;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-    }
-
-    .skill-group h3 {
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      color: var(--gold);
-      margin-bottom: 22px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .skill-icons {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .skill {
-      min-height: 85px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: rgba(255,255,255,.018);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      transition:
-        transform 0.2s ease,
-        border-color 0.2s ease;
-    }
-
-    .skill:hover {
-      transform: translateY(-4px);
-      border-color: rgba(232,176,75,.4);
-    }
-
-    .skill i {
-      font-size: 2.1rem;
-      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
-    }
-
-    .skill span {
-      font-family: var(--font-mono);
-      color: var(--ink-dim);
-      font-size: 0.65rem;
-    }
-
-    .text-skill {
-      font-family: var(--font-head);
-      font-size: 1rem;
-      color: var(--gold-light);
-      font-weight: 600;
-    }
-
-    /* ========================================
-       EDUCATION
-    ======================================== */
-
-    .education-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .education-card,
-    .cert-card {
-      padding: 30px;
-      border-radius: 13px;
-      border: 1px solid var(--line);
-      background: var(--card);
-    }
-
-    .edu-row {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-
-
-
-    .edu-degree {
-      font-family: var(--font-head);
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .edu-meta {
-      font-family: var(--font-mono);
-      color: var(--ink-dim);
-      font-size: 0.72rem;
-      margin-top: 6px;
-    }
-
-    .edu-extra {
-      margin-top: 28px;
-      padding-top: 24px;
-      border-top: 1px solid var(--line);
-    }
-
-    .edu-extra-title {
-      font-family: var(--font-mono);
-      color: var(--gold);
-      font-size: 0.72rem;
-      margin-bottom: 9px;
-    }
-
-    .edu-extra p {
-      color: var(--ink-dim);
-      font-size: 0.85rem;
-      margin-bottom: 5px;
-    }
-
-    .cert-card h3 {
-      font-family: var(--font-head);
-      font-size: 1rem;
-      margin-bottom: 15px;
-    }
-
-    .cert-list {
-      list-style: none;
-    }
-
-    .cert-list li {
-      padding: 13px 0;
-      border-bottom: 1px solid var(--line);
-      color: var(--ink-dim);
-      font-size: 0.86rem;
-    }
-
-    .cert-list li:last-child {
-      border-bottom: none;
-    }
-
-    .cert-list strong {
-      color: var(--ink);
-      font-weight: 500;
-    }
-
-    /* ========================================
-       AVAILABILITY CTA
-    ======================================== */
-
-    .availability-section {
-      padding: 90px 0;
-    }
-
-    .availability-box {
-      position: relative;
-      padding: 55px;
-      border: 1px solid rgba(232,176,75,.28);
-      background:
-        radial-gradient(circle at 90% 20%, rgba(232,176,75,.1), transparent 32%),
-        var(--card);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .availability-label {
-      font-family: var(--font-mono);
-      color: var(--green);
-      font-size: 0.75rem;
-      display: flex;
-      gap: 9px;
-      align-items: center;
-      margin-bottom: 19px;
-    }
-
-    .availability-label::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      animation: pulse 2s infinite;
-    }
-
-    .availability-box h2 {
-      max-width: 700px;
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      line-height: 1.12;
-    }
-
-    .availability-box p {
-      max-width: 660px;
-      color: var(--ink-dim);
-      margin-top: 19px;
-      font-size: 0.98rem;
-    }
-
-    .work-types {
-      margin-top: 28px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .work-types span {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      border: 1px solid var(--line);
-      padding: 7px 11px;
-      border-radius: 999px;
-      color: var(--ink-dim);
-    }
-
-    /* ========================================
-       CONTACT
-    ======================================== */
-
-    footer {
-      padding: 105px 0 50px;
-      border-top: 1px solid var(--line);
-    }
-
-    .contact-heading {
-      font-family: var(--font-head);
-      font-size: clamp(2.4rem, 6vw, 4.6rem);
-      max-width: 780px;
-      line-height: 1.04;
-      letter-spacing: -0.045em;
-    }
-
-    .contact-heading span {
-      color: var(--gold);
-    }
-
-    .contact-sub {
-      margin-top: 20px;
-      color: var(--ink-dim);
-      max-width: 600px;
-    }
-
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 60px;
-      margin-top: 55px;
-      align-items: start;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .contact-links a {
-      padding: 17px 0;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      color: var(--ink-dim);
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      transition:
-        color 0.2s ease,
-        padding-left 0.2s ease;
-    }
-
-    .contact-links a:hover {
-      color: var(--gold);
-      padding-left: 5px;
-    }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .field label {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--ink-dim);
-      margin-bottom: 8px;
-    }
-
-    .field input,
-    .field textarea {
-      width: 100%;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 7px;
-      padding: 13px 14px;
-      color: var(--ink);
-      transition:
-        border-color 0.2s ease,
-        background 0.2s ease;
-    }
-
-    .field input:focus,
-    .field textarea:focus {
-      outline: none;
-      border-color: var(--gold-dim);
-      background: rgba(18,39,62,.9);
-    }
-
-    .field textarea {
-      min-height: 130px;
-      resize: vertical;
-    }
-
-    .submit-btn {
-      width: fit-content;
-      border: 0;
-      background: var(--gold);
-      color: var(--bg);
-      padding: 12px 22px;
-      border-radius: 7px;
-      cursor: pointer;
-      font-weight: 600;
-      transition:
-        transform 0.2s ease,
-        background 0.2s ease;
-    }
-
-    .submit-btn:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-    }
-
-    .submit-btn:disabled {
-      opacity: 0.6;
-      cursor: default;
-    }
-
-    .form-status {
-      min-height: 1.2em;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-    }
-
-    .form-status.ok { color: var(--green); }
-    .form-status.err { color: #e38080; }
-
-    .footer-bottom {
-      margin-top: 80px;
-      padding-top: 22px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      color: rgba(159,176,195,.55);
-      font-family: var(--font-mono);
-      font-size: 0.67rem;
-    }
-
-    /* ========================================
-       RESPONSIVE
-    ======================================== */
-
-    @media (max-width: 950px) {
-      .hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        padding-top: 90px;
-      }
-
-      .hero-title {
-        max-width: 12ch;
-      }
-
-      .hero-visual {
-        max-width: 600px;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .projects,
-      .education-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .wrap {
-        width: min(100% - 34px, 1120px);
-      }
-
-      .nav-links,
-      .nav-status {
-        display: none;
-      }
-
-      .hero {
-        padding-top: 70px;
-        padding-bottom: 75px;
-        gap: 55px;
-      }
-
-      .hero-title {
-        font-size: clamp(2.8rem, 14vw, 4.5rem);
-      }
-
-      .floating-card {
-        right: 10px;
-      }
-
-      section.content-section {
-        padding: 75px 0;
-      }
-
-      .services-grid,
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .experience-card {
-        grid-template-columns: 1fr;
-      }
-
-      .skill-icons {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .availability-box {
-        padding: 35px 25px;
-      }
-
-      .contact-layout {
-        grid-template-columns: 1fr;
-        gap: 45px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        gap: 8px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .skill-icons {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .project {
-        padding: 24px;
-      }
-
-      .contact-links a {
-        flex-direction: column;
-        gap: 3px;
-      }
-
-      .floating-card {
-        display: none;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-
-      html {
-        scroll-behavior: auto;
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none;
-      }
-    }
-  </style>
+  <meta name="theme-color" content="#0a0c10" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Batool Ashour — AI Engineer" />
+  <meta property="og:description" content="I build the pipeline between raw data and working AI systems." />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%230a0c10%27/%3E%3Ctext x=%2716%27 y=%2721%27 font-family=%27monospace%27 font-size=%2712%27 fill=%27%23e3b25a%27 text-anchor=%27middle%27%3EBA%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/site.css" />
 </head>
 
 <body>
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-ne" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-zoom" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-chev-left" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+    <symbol id="i-chev-right" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  </svg>
 
-  <div class="page-grid"></div>
-  <div class="orb orb-one"></div>
-  <div class="orb orb-two"></div>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ===================== NAV ===================== -->
+  <!-- ===================== HEADER ===================== -->
 
-  <header>
-    <nav class="wrap">
-      <a href="#" class="brand">
-        Batool<span>.</span>Ashour
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Primary">
+      <a href="#top" class="brand" aria-label="Batool Ashour — home">
+        <span class="brand-mark" aria-hidden="true">BA</span>
+        Batool Ashour
       </a>
 
-      <div class="nav-right">
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-        </div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
 
-        <div class="nav-status">
-          <span class="status-dot"></span>
-          Available
-        </div>
+      <div class="nav-links" id="nav-menu">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact" class="btn btn-sm nav-cta">Get in touch</a>
       </div>
     </nav>
   </header>
 
-  <main>
+  <main id="main">
 
     <!-- ===================== HERO ===================== -->
 
-    <section class="hero wrap">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <canvas class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="wrap hero-grid">
 
-      <div class="hero-content">
-
-        <div class="hero-tag">
-          Available for projects & remote opportunities
-        </div>
-
-        <div class="hero-eyebrow">
-          AI Engineer · Saudi Arabia
-        </div>
-
-        <h1 class="hero-title">
-          Hi, I'm <span class="accent">Batool Ashour.</span>
-        </h1>
-
-        <p class="hero-sub">
-          An Artificial Intelligence undergraduate building machine
-          learning, computer vision and RAG-powered applications — from
-          data and model development to APIs and working AI systems.
-          <strong>
-            Open to freelance projects, collaborations and
-            remote opportunities.
-          </strong>
-        </p>
-
-        <div class="hero-links">
-          <a
-            class="btn primary"
-            href="#contact"
-          >
-            Let's work together ↗︎
-          </a>
-
-          <a
-            class="btn"
-            href="https://github.com/BatoolAshour"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub ↗︎
-          </a>
-
-          <a
-            class="btn"
-            href="https://linkedin.com/in/batoolashour"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn ↗︎
-          </a>
-        </div>
-
-      </div>
-
-      <div class="hero-visual">
-
-        <div class="terminal">
-
-          <div class="terminal-top">
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
+        <div class="hero-enter">
+          <div class="hero-meta">
+            <span class="availability"><span class="status-dot" aria-hidden="true"></span>Open to part-time, remote &amp; project work</span>
+            <span class="eyebrow">AI Engineer · Saudi Arabia</span>
           </div>
 
-          <div class="terminal-body">
+          <h1 class="hero-name" id="hero-title">
+            <span class="line"><span>Batool Ashour</span></span>
+            <span class="line hero-role"><span>AI Engineer</span></span>
+          </h1>
 
-            <div>
-              <span class="code-key">class</span>
-              <span class="code-value"> BatoolAshour</span>:
-            </div>
+          <p class="hero-tagline">
+            I build the pipeline between <em>raw data</em> and <em>working AI systems</em>.
+          </p>
 
-            <br>
+          <p class="hero-sub">
+            An Artificial Intelligence undergraduate building machine learning,
+            computer vision and RAG-powered applications — from data and model
+            development to APIs and working AI systems.
+          </p>
 
-            <div>
-              &nbsp;&nbsp;role =
-              <span class="code-string">"AI Engineer"</span>
-            </div>
-
-            <div>
-              &nbsp;&nbsp;focus = [
-            </div>
-
-            <div>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"Machine Learning"</span>,
-            </div>
-
-            <div>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"Computer Vision"</span>,
-            </div>
-
-            <div>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"RAG & LLMs"</span>,
-            </div>
-
-            <div>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"AI APIs"</span>
-            </div>
-
-            <div>
-              &nbsp;&nbsp;]
-            </div>
-
-            <br>
-
-            <div>
-              &nbsp;&nbsp;location =
-              <span class="code-string">"Saudi Arabia"</span>
-            </div>
-
-            <div>
-              &nbsp;&nbsp;remote =
-              <span class="code-value">True</span>
-            </div>
-
-            <div>
-              &nbsp;&nbsp;projects =
-              <span class="code-value">True</span>
-            </div>
-
-            <br>
-
-            <span class="code-comment"># ready to build something useful</span>
-            <span class="cursor"></span>
-
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#work">
+              View projects
+              <svg class="icon arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </a>
+            <a class="btn" href="https://github.com/BatoolAshour" target="_blank" rel="noopener noreferrer">
+              <svg class="icon icon-fill" aria-hidden="true"><use href="#i-github"/></svg>
+              GitHub
+            </a>
+            <a class="btn" href="https://linkedin.com/in/batoolashour" target="_blank" rel="noopener noreferrer">
+              <svg class="icon icon-fill" aria-hidden="true"><use href="#i-linkedin"/></svg>
+              LinkedIn
+            </a>
           </div>
-
         </div>
 
-        <div class="floating-card">
-          <div class="floating-label">Current status</div>
-          <div class="floating-value">● Open to opportunities</div>
-        </div>
+        <!-- Pipeline visual: the stages I work across, with tools from my projects -->
+        <figure class="pipeline hero-enter" aria-label="The stages I work across, from data to deployed application">
+          <div class="pipeline-top">
+            <span class="window-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span>pipeline.py</span>
+            <span aria-hidden="true">5 stages</span>
+          </div>
+          <ol class="pipeline-steps">
+            <li class="pipeline-step is-active">
+              <span class="pipeline-node" aria-hidden="true">01</span>
+              <div><h3>Ingest &amp; prepare data</h3><p>PDFs · images · transcripts · Pandas</p></div>
+            </li>
+            <li class="pipeline-step">
+              <span class="pipeline-node" aria-hidden="true">02</span>
+              <div><h3>Train &amp; evaluate models</h3><p>PyTorch CNNs · XGBoost · LSTM · scikit-learn</p></div>
+            </li>
+            <li class="pipeline-step">
+              <span class="pipeline-node" aria-hidden="true">03</span>
+              <div><h3>Retrieve &amp; reason</h3><p>embeddings · ChromaDB · reranking · LLMs</p></div>
+            </li>
+            <li class="pipeline-step">
+              <span class="pipeline-node" aria-hidden="true">04</span>
+              <div><h3>Serve through APIs</h3><p>FastAPI · Django · REST</p></div>
+            </li>
+            <li class="pipeline-step">
+              <span class="pipeline-node" aria-hidden="true">05</span>
+              <div><h3>Ship the application</h3><p>web apps · dashboards · visualisation</p></div>
+            </li>
+          </ol>
+          <figcaption class="pipeline-foot">
+            <span>raw data → working system</span>
+            <span><strong>●</strong> ready</span>
+          </figcaption>
+        </figure>
 
       </div>
-
     </section>
 
-    <!-- ===================== TECH MARQUEE ===================== -->
-
-    <div class="tech-strip">
-
-      <div class="tech-track">
-
-        <!-- Set 1 -->
-
-        <div class="tech-item">
-          <i class="devicon-python-plain"></i>
-          Python
-        </div>
-
-        <div class="tech-item">
-          <i class="devicon-pytorch-original"></i>
-          PyTorch
-        </div>
-
-        <div class="tech-item">
-          <i class="devicon-fastapi-plain"></i>
-          FastAPI
-        </div>
-
-        <div class="tech-item">
-          <i class="devicon-django-plain"></i>
-          Django
-        </div>
-
-        <div class="tech-item">
-          <i class="devicon-scikitlearn-plain"></i>
-          Scikit-learn
-        </div>
-
-        <div class="tech-item">
-          <i class="devicon-pandas-plain"></i>
-          Pandas
-        </div>
-
-        <div class="tech-item">
-          <i class="devicon-mysql-original"></i>
-          MySQL
-        </div>
-
-        <div class="tech-item">
-          <i class="devicon-github-original"></i>
-          GitHub
-        </div>
-
-        <!-- Duplicate for continuous animation -->
-
-        <div class="tech-item">
-          <i class="devicon-python-plain"></i>
-          Python
-        </div>
-
-        <div class="tech-item">
-          <i class="devicon-pytorch-original"></i>
-          PyTorch
-        </div>
-
-        <div class="tech-item">
-          <i class="devicon-fastapi-plain"></i>
-          FastAPI
-        </div>
-
-        <div class="tech-item">
-          <i class="devicon-django-plain"></i>
-          Django
-        </div>
-
-        <div class="tech-item">
-          <i class="devicon-scikitlearn-plain"></i>
-          Scikit-learn
-        </div>
-
-        <div class="tech-item">
-          <i class="devicon-pandas-plain"></i>
-          Pandas
-        </div>
-
-        <div class="tech-item">
-          <i class="devicon-mysql-original"></i>
-          MySQL
-        </div>
-
-        <div class="tech-item">
-          <i class="devicon-github-original"></i>
-          GitHub
-        </div>
-
-      </div>
-
+    <!-- Quick facts -->
+    <div class="facts">
+      <dl class="wrap facts-grid">
+        <div class="fact"><dt>Focus</dt><dd>ML · Computer Vision · RAG · APIs</dd></div>
+        <div class="fact"><dt>Recent</dt><dd>AI Intern, KFUPM</dd></div>
+        <div class="fact"><dt>Studying</dt><dd>BSc Artificial Intelligence, IAU</dd></div>
+        <div class="fact"><dt>Based in</dt><dd>Eastern Province · Remote</dd></div>
+      </dl>
     </div>
 
-    <!-- ===================== WHAT I BUILD ===================== -->
+    <!-- ===================== WORK ===================== -->
 
-    <section id="about" class="content-section">
-
+    <section class="section" id="work" aria-labelledby="work-title">
       <div class="wrap">
 
         <div class="section-head reveal">
-          <span class="section-num">01</span>
-          <h2>What I can build</h2>
-          <span class="section-line"></span>
-        </div>
-
-        <div class="services-grid">
-
-          <article class="service-card reveal">
-            <div class="service-icon">ML</div>
-            <h3>Machine Learning</h3>
-            <p>
-              Data preprocessing, feature engineering, model training,
-              evaluation and prediction pipelines for real-world problems.
-            </p>
-          </article>
-
-          <article class="service-card reveal">
-            <div class="service-icon">CV</div>
-            <h3>Computer Vision</h3>
-            <p>
-              Image classification and deep-learning systems using CNNs
-              and PyTorch with practical application integration.
-            </p>
-          </article>
-
-          <article class="service-card reveal">
-            <div class="service-icon">AI</div>
-            <h3>RAG & LLM Apps</h3>
-            <p>
-              Intelligent applications combining LLMs, semantic search,
-              vector databases and retrieval-augmented generation.
-            </p>
-          </article>
-
-          <article class="service-card reveal">
-            <div class="service-icon">API</div>
-            <h3>AI Backend & APIs</h3>
-            <p>
-              FastAPI and Django backends that connect trained models to
-              usable applications through clean REST APIs.
-            </p>
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ===================== EXPERIENCE ===================== -->
-
-    <section id="experience" class="content-section">
-
-      <div class="wrap">
-
-        <div class="section-head reveal">
-          <span class="section-num">02</span>
-          <h2>Experience</h2>
-          <span class="section-line"></span>
-        </div>
-
-        <article class="experience-card reveal">
-
           <div>
+            <span class="eyebrow eyebrow-accent section-index">01 / Selected work</span>
+            <h2 class="section-title" id="work-title">Projects</h2>
+          </div>
+          <p class="section-lede">
+            Engineering case studies across research intelligence, retrieval,
+            computer vision and robotics — what the problem was, how it was
+            solved, and what was built.
+          </p>
+        </div>
 
-            <div class="stage-role">
-              AI Intern — King Fahd University of Petroleum and Minerals
-              (KFUPM)
-            </div>
+        <!-- Featured: Burhan -->
+        <article class="featured reveal" aria-labelledby="burhan-title">
+          <span class="featured-sheen" aria-hidden="true"></span>
 
-            <div class="stage-meta">
-              07/2026 – 08/2026 · Dhahran, Saudi Arabia
-            </div>
+          <div class="featured-copy">
+            <span class="featured-flag">
+              <span class="badge badge-accent">Featured</span>
+              <span class="eyebrow">Team project · FARQ Hackathon</span>
+            </span>
 
-            <ul>
-              <li>
-                Engineered a Django web application using a PyTorch CNN
-                to classify images as Real or AI-generated, including
-                confidence scoring, BLIP-based image captioning and
-                prediction-history tracking.
-              </li>
+            <h3 class="project-name" id="burhan-title">Burhan <span class="ar" lang="ar">بُرهان</span></h3>
+            <p class="project-kicker">AI-powered research intelligence platform</p>
 
-              <li>
-                Designed an academic performance forecasting system
-                predicting course grades and GPA using historical
-                transcripts and course specification data.
-              </li>
+            <p class="project-summary">
+              Burhan turns a set of research papers into a structured,
+              evidence-backed model of a research field — a
+              <em>Research Digital Twin</em> of methods, datasets, metrics,
+              findings, limitations and research gaps that can be explored
+              and questioned.
+            </p>
 
-              <li>
-                Benchmarked XGBoost against LSTM through staged
-                experimentation to evaluate and optimize model
-                performance.
-              </li>
+            <dl class="ps-grid">
+              <div class="ps-item">
+                <dt>Problem</dt>
+                <dd>Researchers need to see how a field behaves across many papers — which methods and datasets recur, which limitations repeat, where the gaps are. Most tools work one document at a time.</dd>
+              </div>
+              <div class="ps-item">
+                <dt>Solution</dt>
+                <dd>A FastAPI pipeline parses PDFs, uses an LLM to extract validated scientific entities, links them into a knowledge graph and reasons across papers — surfaced in a Next.js dashboard.</dd>
+              </div>
+            </dl>
 
-              <li>
-                Worked across the complete AI pipeline — data
-                preprocessing, model training, evaluation, REST API
-                development and frontend integration.
-              </li>
+            <ul class="feature-list">
+              <li>Multi-PDF ingestion &amp; parsing</li>
+              <li>LLM extraction validated with Pydantic</li>
+              <li>Typed scientific knowledge graph</li>
+              <li>Cross-paper method &amp; dataset analysis</li>
+              <li>Evidence-backed research gap discovery</li>
+              <li>Grounded Q&amp;A with citations &amp; confidence</li>
             </ul>
 
+            <div class="badges project-stack" aria-label="Tech stack">
+              <span class="badge">Python</span>
+              <span class="badge">FastAPI</span>
+              <span class="badge">Pydantic</span>
+              <span class="badge">PyMuPDF</span>
+              <span class="badge">Groq · gpt-oss-120b</span>
+              <span class="badge">Next.js</span>
+              <span class="badge">TypeScript</span>
+              <span class="badge">React Flow</span>
+              <span class="badge">Tailwind CSS</span>
+            </div>
+
+            <dl class="stat-row" aria-label="Burhan by the numbers">
+              <div><dt>PDFs per run</dt><dd data-count="5">5</dd></div>
+              <div><dt>Fields extracted</dt><dd data-count="9">9</dd></div>
+              <div><dt>Node types</dt><dd data-count="7">7</dd></div>
+              <div><dt>Pipeline stages</dt><dd data-count="6">6</dd></div>
+            </dl>
+
+            <div class="project-meta">
+              <span>Role: Backend &amp; System Integration</span>
+              <span>Team of 5</span>
+              <span>MVP prototype</span>
+            </div>
+
+            <div class="project-actions">
+              <a class="btn btn-primary" href="projects/burhan/">
+                View case study
+                <svg class="icon arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="featured-media" data-showcase data-gallery>
+            <div class="browser" data-tilt>
+              <div class="browser-bar">
+                <span class="window-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+                <span class="browser-url">burhan · research digital twin</span>
+                <span class="spacer" aria-hidden="true"></span>
+              </div>
+              <button class="browser-view" type="button" aria-label="Enlarge Burhan screenshot">
+                <img
+                  src="assets/projects/burhan/dashboard.webp"
+                  alt="Burhan Research Digital Twin dashboard with summary counts, knowledge graph and research assistant"
+                  width="1600" height="1000"
+                  loading="lazy" decoding="async"
+                />
+                <span class="zoom-hint"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg>Enlarge</span>
+              </button>
+            </div>
+
+            <div class="thumbs" role="group" aria-label="Burhan screens">
+              <div class="thumb-item" data-active>
+                <button class="thumb" type="button" aria-pressed="true"
+                  data-full="assets/projects/burhan/dashboard.webp"
+                  data-url="burhan · research digital twin"
+                  data-alt="Burhan Research Digital Twin dashboard with summary counts, knowledge graph and research assistant"
+                  data-caption="Research Digital Twin dashboard — counts, knowledge graph and research assistant">
+                  <img src="assets/projects/burhan/dashboard.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async" />
+                </button>
+                <span class="thumb-label">Dashboard</span>
+              </div>
+              <div class="thumb-item">
+                <button class="thumb" type="button" aria-pressed="false"
+                  data-full="assets/projects/burhan/upload.webp"
+                  data-url="burhan · upload papers"
+                  data-alt="Burhan paper upload screen with five selected PDF papers"
+                  data-caption="Paper upload — five PDFs from one research domain">
+                  <img src="assets/projects/burhan/upload.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async" />
+                </button>
+                <span class="thumb-label">Upload</span>
+              </div>
+              <div class="thumb-item">
+                <button class="thumb" type="button" aria-pressed="false"
+                  data-full="assets/projects/burhan/structured-extraction.webp"
+                  data-url="burhan · structured extraction"
+                  data-alt="Burhan structured extraction table listing method, dataset, metrics and findings per paper"
+                  data-caption="Structured extraction — method, dataset, metrics and findings per paper">
+                  <img src="assets/projects/burhan/structured-extraction.webp" alt="" width="1200" height="1068" loading="lazy" decoding="async" />
+                </button>
+                <span class="thumb-label">Extraction</span>
+              </div>
+              <div class="thumb-item">
+                <button class="thumb" type="button" aria-pressed="false"
+                  data-full="assets/projects/burhan/landing.webp"
+                  data-url="burhan"
+                  data-alt="Burhan landing page: Build a Living Research Digital Twin"
+                  data-caption="Landing page">
+                  <img src="assets/projects/burhan/landing.webp" alt="" width="1600" height="1000" loading="lazy" decoding="async" />
+                </button>
+                <span class="thumb-label">Landing</span>
+              </div>
+            </div>
           </div>
 
         </article>
 
-      </div>
+        <!-- Other projects -->
+        <div class="projects-grid">
 
+          <!-- Study Assistant RAG -->
+          <article class="project-card reveal" aria-labelledby="p-rag">
+            <div class="card-media is-text" aria-hidden="true">
+              <div class="card-placeholder">
+                <span>retrieval pipeline</span>
+                <div class="flow">
+                  <span>PDF</span><i>→</i><span>chunks</span><i>→</i><span>embeddings</span><i>→</i><span>ChromaDB</span><i>→</i><span>rerank</span><i>→</i><span>LLM</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-top"><span>02</span><span>AI / Backend Developer</span></div>
+              <h3 class="card-title" id="p-rag">Study Assistant RAG</h3>
+              <p class="card-summary">
+                A retrieval-augmented generation system that answers questions
+                from PDF documents by combining semantic search with an LLM.
+              </p>
+              <dl class="ps-grid">
+                <div class="ps-item">
+                  <dt>Problem</dt>
+                  <dd>Answer questions grounded in the content of specific PDF documents.</dd>
+                </div>
+                <div class="ps-item">
+                  <dt>Solution</dt>
+                  <dd>A backend pipeline that extracts, chunks and embeds PDF text into ChromaDB, retrieves and reranks passages, and generates answers with Groq's LLM API.</dd>
+                </div>
+              </dl>
+              <ul class="feature-list">
+                <li>Text extraction, chunking and embeddings</li>
+                <li>Vector storage in ChromaDB with reranking for retrieval accuracy</li>
+                <li>FastAPI REST API for PDF uploads, questions and document summaries</li>
+              </ul>
+              <div class="card-foot">
+                <div class="badges" aria-label="Tech stack">
+                  <span class="badge">Python</span>
+                  <span class="badge">FastAPI</span>
+                  <span class="badge">ChromaDB</span>
+                  <span class="badge">Groq API</span>
+                  <span class="badge">RAG</span>
+                  <span class="badge">LLMs</span>
+                </div>
+                <div class="card-links">
+                  <a class="text-link" href="https://github.com/BatoolAshour/Study-Assistant-RAG" target="_blank" rel="noopener noreferrer">
+                    GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- AI vs Real Image Classifier -->
+          <article class="project-card reveal" aria-labelledby="p-cls">
+            <div class="card-media" data-gallery>
+              <button type="button" data-full="assets/ai-classifier.webp" data-caption="AI vs Real Image Classifier — upload screen" aria-label="Enlarge: classifier upload screen">
+                <picture>
+                  <source srcset="assets/ai-classifier.webp" type="image/webp" />
+                  <img src="assets/ai-classifier.jpg" alt="AI vs Real Image Classifier upload screen" width="1200" height="900" loading="lazy" decoding="async" />
+                </picture>
+              </button>
+              <button type="button" data-full="assets/ai-classifier-history.webp" data-caption="AI vs Real Image Classifier — prediction history" aria-label="Enlarge: prediction history table">
+                <picture>
+                  <source srcset="assets/ai-classifier-history.webp" type="image/webp" />
+                  <img src="assets/ai-classifier-history.jpg" alt="AI vs Real Image Classifier prediction history table" width="1200" height="900" loading="lazy" decoding="async" />
+                </picture>
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="card-top"><span>03</span><span>Full-Stack AI Developer</span></div>
+              <h3 class="card-title" id="p-cls">AI vs Real Image Classifier</h3>
+              <p class="card-summary">
+                A Django web app that uses a trained CNN model to detect whether
+                an uploaded image is AI-generated or real.
+              </p>
+              <dl class="ps-grid">
+                <div class="ps-item">
+                  <dt>Problem</dt>
+                  <dd>Tell whether an image is AI-generated or a real photograph.</dd>
+                </div>
+                <div class="ps-item">
+                  <dt>Solution</dt>
+                  <dd>A trained PyTorch CNN served through a Django web interface that returns a prediction with a confidence score.</dd>
+                </div>
+              </dl>
+              <ul class="feature-list">
+                <li>Image upload through the web interface</li>
+                <li>Prediction with a confidence score</li>
+                <li>Processing states tracked: pending → finished / failed</li>
+                <li>Full history of past predictions and their statuses</li>
+              </ul>
+              <div class="card-foot">
+                <div class="badges" aria-label="Tech stack">
+                  <span class="badge">Python</span>
+                  <span class="badge">Django</span>
+                  <span class="badge">PyTorch</span>
+                  <span class="badge">CNN</span>
+                </div>
+                <div class="card-links">
+                  <a class="text-link" href="https://github.com/BatoolAshour/Django-AI-Website" target="_blank" rel="noopener noreferrer">
+                    GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Hazza -->
+          <article class="project-card reveal" aria-labelledby="p-hazza">
+            <div class="card-media" data-gallery>
+              <button type="button" data-full="assets/hazza-rover.webp" data-caption="Hazza — the LEGO SPIKE Prime cleaning rover" aria-label="Enlarge: Hazza rover photo">
+                <picture>
+                  <source srcset="assets/hazza-rover.webp" type="image/webp" />
+                  <img src="assets/hazza-rover.jpg" alt="Hazza LEGO SPIKE Prime solar panel cleaning rover" width="1200" height="801" loading="lazy" decoding="async" />
+                </picture>
+              </button>
+              <button type="button" data-full="assets/hazza-poster.webp" data-caption="Hazza — research poster" aria-label="Enlarge: Hazza research poster">
+                <picture>
+                  <source srcset="assets/hazza-poster.webp" type="image/webp" />
+                  <img src="assets/hazza-poster.jpg" alt="Hazza project research poster summary" width="900" height="1246" loading="lazy" decoding="async" />
+                </picture>
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="card-top"><span>04</span><span>Robotics Developer</span></div>
+              <h3 class="card-title" id="p-hazza">Hazza — Solar Panel Cleaning Rover</h3>
+              <p class="card-summary">
+                An autonomous LEGO SPIKE Prime rover designed to detect and
+                clean dust from solar panels.
+              </p>
+              <dl class="ps-grid">
+                <div class="ps-item">
+                  <dt>Problem</dt>
+                  <dd>Dust reduces solar panel efficiency in desert conditions.</dd>
+                </div>
+                <div class="ps-item">
+                  <dt>Solution</dt>
+                  <dd>A rover that navigates between panels, inspects their status and performs cleaning without human intervention.</dd>
+                </div>
+              </dl>
+              <ul class="feature-list">
+                <li>Colour sensors to inspect panel status</li>
+                <li>Distance sensing to navigate between panels</li>
+                <li>Lifting brush cleaning mechanism</li>
+              </ul>
+              <div class="card-foot">
+                <div class="badges" aria-label="Tech stack">
+                  <span class="badge">LEGO SPIKE Prime</span>
+                  <span class="badge">Python</span>
+                  <span class="badge">Robotics</span>
+                  <span class="badge">Sensors</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- EduRide -->
+          <article class="project-card reveal" aria-labelledby="p-eduride">
+            <div class="card-media is-text" aria-hidden="true">
+              <div class="card-placeholder">
+                <span>interaction loop</span>
+                <div class="flow">
+                  <span>voice</span><i>→</i><span>speech-to-text</span><i>→</i><span>learning &amp; quiz</span><i>→</i><span>text-to-speech</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-top"><span>05</span><span>System Design</span></div>
+              <h3 class="card-title" id="p-eduride">EduRide</h3>
+              <p class="card-summary">
+                A voice-based, hands-free learning and quiz system using
+                Speech-to-Text and Text-to-Speech technologies.
+              </p>
+              <dl class="ps-grid">
+                <div class="ps-item">
+                  <dt>Problem</dt>
+                  <dd>Learning and quizzing in situations where hands-free interaction is needed.</dd>
+                </div>
+                <div class="ps-item">
+                  <dt>Solution</dt>
+                  <dd>A voice-driven system — I designed its architecture with an emphasis on accessibility, safety and simple user interaction.</dd>
+                </div>
+              </dl>
+              <div class="card-foot">
+                <div class="badges" aria-label="Tech stack">
+                  <span class="badge">Speech-to-Text</span>
+                  <span class="badge">Text-to-Speech</span>
+                  <span class="badge">Accessibility</span>
+                  <span class="badge">Frontend</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
     </section>
 
-    <!-- ===================== PROJECTS ===================== -->
+    <!-- ===================== EXPERIENCE ===================== -->
 
-    <section id="projects" class="content-section">
-
+    <section class="section" id="experience" aria-labelledby="exp-title">
       <div class="wrap">
-
         <div class="section-head reveal">
-          <span class="section-num">03</span>
-          <h2>Projects</h2>
-          <span class="section-line"></span>
+          <div>
+            <span class="eyebrow eyebrow-accent section-index">02 / Experience</span>
+            <h2 class="section-title" id="exp-title">Where I've worked</h2>
+          </div>
+          <p class="section-lede">
+            Hands-on work across the full AI pipeline — data, models,
+            evaluation, APIs and the applications that use them.
+          </p>
         </div>
 
-        <div class="projects">
-
-          <article class="project reveal">
-
-            <div class="project-number">
-              PROJECT / 01
+        <div class="timeline-wrap">
+          <span class="timeline-rail" aria-hidden="true"><span class="timeline-fill"></span></span>
+          <ol class="timeline">
+          <li class="timeline-item reveal">
+            <div class="timeline-when">
+              07/2026 – 08/2026
+              <span class="where">Dhahran, Saudi Arabia</span>
             </div>
-
-            <div class="project-title">
-              Study Assistant RAG
+            <div>
+              <h3 class="timeline-role">AI Intern</h3>
+              <p class="timeline-org">King Fahd University of Petroleum and Minerals (KFUPM)</p>
+              <ul class="timeline-points">
+                <li>Engineered a Django web application using a PyTorch CNN to classify images as Real or AI-generated, including confidence scoring, BLIP-based image captioning and prediction-history tracking.</li>
+                <li>Designed an academic performance forecasting system predicting course grades and GPA using historical transcripts and course specification data.</li>
+                <li>Benchmarked XGBoost against LSTM through staged experimentation to evaluate and optimise model performance.</li>
+                <li>Worked across the complete AI pipeline — data preprocessing, model training, evaluation, REST API development and frontend integration.</li>
+              </ul>
+              <div class="badges" aria-label="Technologies">
+                <span class="badge">Django</span>
+                <span class="badge">PyTorch</span>
+                <span class="badge">CNN</span>
+                <span class="badge">BLIP</span>
+                <span class="badge">XGBoost</span>
+                <span class="badge">LSTM</span>
+                <span class="badge">REST APIs</span>
+              </div>
             </div>
+          </li>
 
-            <div class="project-role">
-              AI / Backend Developer
+          <li class="timeline-item reveal">
+            <div class="timeline-when">
+              09/2026
+              <span class="where">FARQ Hackathon</span>
             </div>
-
-            <p>
-              A retrieval-augmented generation system that answers
-              questions from PDF documents by combining semantic search
-              with an LLM. Built the backend pipeline including text
-              extraction, chunking, embeddings, vector storage in
-              ChromaDB and reranking to improve retrieval accuracy.
-              Exposed through a FastAPI REST API for PDF uploads,
-              questions and document summaries using Groq's LLM API.
-            </p>
-
-            <div class="stack">
-              <span>FastAPI</span>
-              <span>ChromaDB</span>
-              <span>Groq API</span>
-              <span>RAG</span>
-              <span>LLMs</span>
-              <span>Python</span>
+            <div>
+              <h3 class="timeline-role">Backend &amp; System Integration — Burhan</h3>
+              <p class="timeline-org">Five-person hackathon team · mentored by Dr. Muzammil, Assistant Professor of AI, KFUPM</p>
+              <ul class="timeline-points">
+                <li>Member of the team building Burhan, an AI research intelligence platform that turns research papers into an evidence-backed Research Digital Twin.</li>
+                <li>Fixed backend startup, Groq LLM integration and the frontend build so the MVP runs end to end (merged into the main branch).</li>
+              </ul>
+              <div class="card-links" style="margin-top:20px">
+                <a class="text-link" href="projects/burhan/">
+                  Burhan case study <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg>
+                </a>
+              </div>
             </div>
-
-            <a
-              class="project-link"
-              href="https://github.com/BatoolAshour/Study-Assistant-RAG"
-              target="_blank"
-              rel="noopener"
-            >
-              View on GitHub ↗︎
-            </a>
-
-          </article>
-
-          <article class="project reveal">
-
-            <div class="project-number">
-              PROJECT / 02
-            </div>
-
-            <div class="project-title">
-              EduRide
-            </div>
-
-            <div class="project-role">
-              Voice-Based Learning System
-            </div>
-
-            <p>
-              A hands-free learning and quiz system using
-              Speech-to-Text and Text-to-Speech technologies.
-              Designed the system architecture with an emphasis on
-              accessibility, safety and simple user interaction.
-            </p>
-
-            <div class="stack">
-              <span>Speech-to-Text</span>
-              <span>Text-to-Speech</span>
-              <span>Accessibility</span>
-              <span>Frontend</span>
-            </div>
-
-          </article>
-
-          <article class="project reveal">
-
-            <div class="project-img-row">
-              <img
-                src="assets/ai-classifier.jpg"
-                alt="AI vs Real Image Classifier upload screen"
-              />
-              <img
-                src="assets/ai-classifier-history.jpg"
-                alt="AI vs Real Image Classifier prediction history table"
-              />
-            </div>
-
-            <div class="project-number">
-              PROJECT / 03
-            </div>
-
-            <div class="project-title">
-              AI vs Real Image Classifier
-            </div>
-
-            <div class="project-role">
-              Full-Stack AI Developer
-            </div>
-
-            <p>
-              A Django web app that uses a trained CNN model to detect
-              whether an uploaded image is AI-generated or real. Upload
-              any image through the web interface and the model returns
-              a prediction with a confidence score. Tracks each
-              prediction through processing states (pending →
-              finished/failed) and stores a full history of past
-              predictions and their statuses.
-            </p>
-
-            <div class="stack">
-              <span>Django</span>
-              <span>PyTorch</span>
-              <span>CNN</span>
-              <span>Python</span>
-            </div>
-
-            <a
-              class="project-link"
-              href="https://github.com/BatoolAshour/Django-AI-Website"
-              target="_blank"
-              rel="noopener"
-            >
-              View on GitHub ↗︎
-            </a>
-
-          </article>
-
-          <article class="project reveal">
-
-            <div class="project-img-row">
-              <img
-                src="assets/hazza-rover.jpg"
-                alt="Hazza LEGO SPIKE Prime solar panel cleaning rover"
-              />
-              <img
-                src="assets/hazza-poster.jpg"
-                alt="Hazza project research poster summary"
-              />
-            </div>
-
-            <div class="project-number">
-              PROJECT / 04
-            </div>
-
-            <div class="project-title">
-              Hazza — Solar Panel Cleaning Rover
-            </div>
-
-            <div class="project-role">
-              Robotics Developer
-            </div>
-
-            <p>
-              An autonomous LEGO SPIKE Prime rover designed to detect
-              and clean dust from solar panels. Using color sensors,
-              distance sensing and a lifting brush mechanism, the rover
-              navigates between panels, inspects their status and
-              performs cleaning without human intervention — built to
-              improve solar panel efficiency in desert conditions.
-            </p>
-
-            <div class="stack">
-              <span>LEGO SPIKE Prime</span>
-              <span>Python</span>
-              <span>Robotics</span>
-              <span>Sensors</span>
-            </div>
-
-          </article>
-
+          </li>
+        </ol>
         </div>
-
       </div>
+    </section>
 
+    <!-- ===================== WHAT I BUILD ===================== -->
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow eyebrow-accent section-index">03 / Capabilities</span>
+            <h2 class="section-title" id="about-title">What I can build</h2>
+          </div>
+          <p class="section-lede">
+            I can work across the pipeline, from data preparation and model
+            development to backend APIs and application integration.
+          </p>
+        </div>
+
+        <div class="capabilities reveal">
+          <article class="capability">
+            <span class="capability-code">/ml</span>
+            <h3>Machine Learning</h3>
+            <p>Data preprocessing, feature engineering, model training, evaluation and prediction pipelines for real-world problems.</p>
+          </article>
+          <article class="capability">
+            <span class="capability-code">/cv</span>
+            <h3>Computer Vision</h3>
+            <p>Image classification and deep-learning systems using CNNs and PyTorch with practical application integration.</p>
+          </article>
+          <article class="capability">
+            <span class="capability-code">/rag</span>
+            <h3>RAG &amp; LLM Apps</h3>
+            <p>Intelligent applications combining LLMs, semantic search, vector databases and retrieval-augmented generation.</p>
+          </article>
+          <article class="capability">
+            <span class="capability-code">/api</span>
+            <h3>AI Backend &amp; APIs</h3>
+            <p>FastAPI and Django backends that connect trained models to usable applications through clean REST APIs.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
     <!-- ===================== SKILLS ===================== -->
 
-    <section id="skills" class="content-section">
-
+    <section class="section" id="skills" aria-labelledby="skills-title">
       <div class="wrap">
-
         <div class="section-head reveal">
-          <span class="section-num">04</span>
-          <h2>Skills & Technologies</h2>
-          <span class="section-line"></span>
+          <div>
+            <span class="eyebrow eyebrow-accent section-index">04 / Skills</span>
+            <h2 class="section-title" id="skills-title">Tools I work with</h2>
+          </div>
+          <p class="section-lede">
+            Grouped by where they sit in the pipeline. Everything here is used
+            in the projects and experience above.
+          </p>
         </div>
 
-        <div class="skills-grid">
-
-          <div class="skill-group reveal">
-
-            <h3>Languages & Development</h3>
-
-            <div class="skill-icons">
-
-              <div class="skill">
-                <i class="devicon-python-plain"></i>
-                <span>Python</span>
-              </div>
-
-              <div class="skill">
-                <i class="devicon-java-plain"></i>
-                <span>Java</span>
-              </div>
-
-              <div class="skill">
-                <i class="devicon-cplusplus-plain"></i>
-                <span>C++</span>
-              </div>
-
-              <div class="skill">
-                <i class="devicon-mysql-original"></i>
-                <span>SQL</span>
-              </div>
-
-              <div class="skill">
-                <i class="devicon-django-plain"></i>
-                <span>Django</span>
-              </div>
-
-              <div class="skill">
-                <i class="devicon-fastapi-plain"></i>
-                <span>FastAPI</span>
-              </div>
-
-              <div class="skill">
-                <i class="devicon-git-plain"></i>
-                <span>Git</span>
-              </div>
-
-              <div class="skill">
-                <i class="devicon-github-original"></i>
-                <span>GitHub</span>
-              </div>
-
+        <div class="skills reveal">
+          <div class="skill-group">
+            <h3>AI / Machine Learning <span>models</span></h3>
+            <div class="badges">
+              <span class="badge">PyTorch</span>
+              <span class="badge">Scikit-learn</span>
+              <span class="badge">CNNs</span>
+              <span class="badge">XGBoost</span>
+              <span class="badge">LSTM</span>
+              <span class="badge">Deep Learning</span>
+              <span class="badge">Computer Vision</span>
             </div>
-
           </div>
-
-          <div class="skill-group reveal">
-
-            <h3>AI & Data</h3>
-
-            <div class="skill-icons">
-
-              <div class="skill">
-                <i class="devicon-pytorch-original"></i>
-                <span>PyTorch</span>
-              </div>
-
-              <div class="skill">
-                <i class="devicon-scikitlearn-plain"></i>
-                <span>Scikit-learn</span>
-              </div>
-
-              <div class="skill">
-                <i class="devicon-pandas-plain"></i>
-                <span>Pandas</span>
-              </div>
-
-              <div class="skill">
-                <i class="devicon-numpy-plain"></i>
-                <span>NumPy</span>
-              </div>
-
-              <div class="skill">
-                <div class="text-skill">ML</div>
-                <span>Machine Learning</span>
-              </div>
-
-              <div class="skill">
-                <div class="text-skill">DL</div>
-                <span>Deep Learning</span>
-              </div>
-
-              <div class="skill">
-                <div class="text-skill">RAG</div>
-                <span>RAG</span>
-              </div>
-
-              <div class="skill">
-                <div class="text-skill">LLM</div>
-                <span>LLMs</span>
-              </div>
-
+          <div class="skill-group">
+            <h3>LLMs &amp; Retrieval <span>generation</span></h3>
+            <div class="badges">
+              <span class="badge">RAG</span>
+              <span class="badge">LLMs</span>
+              <span class="badge">Groq API</span>
+              <span class="badge">ChromaDB</span>
+              <span class="badge">Embeddings</span>
+              <span class="badge">Reranking</span>
             </div>
-
           </div>
-
+          <div class="skill-group">
+            <h3>Backend <span>serving</span></h3>
+            <div class="badges">
+              <span class="badge">Python</span>
+              <span class="badge">FastAPI</span>
+              <span class="badge">Django</span>
+              <span class="badge">REST APIs</span>
+              <span class="badge">Pydantic</span>
+              <span class="badge">SQL / MySQL</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Frontend <span>interfaces</span></h3>
+            <div class="badges">
+              <span class="badge">Next.js</span>
+              <span class="badge">React</span>
+              <span class="badge">TypeScript</span>
+              <span class="badge">Tailwind CSS</span>
+              <span class="badge">React Flow</span>
+              <span class="badge">HTML / CSS / JS</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Data <span>preparation</span></h3>
+            <div class="badges">
+              <span class="badge">Pandas</span>
+              <span class="badge">NumPy</span>
+              <span class="badge">Preprocessing</span>
+              <span class="badge">Feature engineering</span>
+              <span class="badge">PDF parsing</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Languages &amp; Tools <span>everyday</span></h3>
+            <div class="badges">
+              <span class="badge">Python</span>
+              <span class="badge">Java</span>
+              <span class="badge">C++</span>
+              <span class="badge">SQL</span>
+              <span class="badge">Git</span>
+              <span class="badge">GitHub</span>
+              <span class="badge">LEGO SPIKE Prime</span>
+            </div>
+          </div>
         </div>
-
       </div>
-
     </section>
 
     <!-- ===================== EDUCATION ===================== -->
 
-    <section class="content-section">
-
+    <section class="section" id="education" aria-labelledby="edu-title">
       <div class="wrap">
-
         <div class="section-head reveal">
-          <span class="section-num">05</span>
-          <h2>Education & Certifications</h2>
-          <span class="section-line"></span>
+          <div>
+            <span class="eyebrow eyebrow-accent section-index">05 / Education</span>
+            <h2 class="section-title" id="edu-title">Education &amp; certifications</h2>
+          </div>
         </div>
 
-        <div class="education-grid">
+        <div class="edu-grid">
+          <article class="panel reveal">
+            <span class="panel-label">Degree</span>
+            <h3 class="degree">BSc in Artificial Intelligence</h3>
+            <p class="degree-meta">Imam Abdulrahman Bin Faisal University</p>
+            <p class="degree-meta"><span class="mono">Senior AI student · Expected 2027</span></p>
 
-          <div class="education-card reveal">
-
-            <div class="edu-row">
-
+            <div class="panel-split">
               <div>
-                <div class="edu-degree">
-                  BSc in Artificial Intelligence
-                </div>
-
-                <div class="edu-meta">
-                  Senior AI Student
-                </div>
-
-                <div class="edu-meta">
-                  Imam Abdulrahman Bin Faisal University
-                </div>
-
-                <div class="edu-meta">
-                  Expected 2027
-                </div>
+                <span class="panel-label">Volunteering</span>
+                <ul class="plain-list">
+                  <li>AI &amp; Robot Club — Events &amp; Activities Committee</li>
+                  <li>Programming Club — Marketing &amp; Publishing Committee</li>
+                </ul>
               </div>
-
-            </div>
-
-            <div class="edu-extra">
-              <div class="edu-extra-title">
-                VOULNTEER EXPERIENCES
+              <div>
+                <span class="panel-label">Languages</span>
+                <ul class="plain-list">
+                  <li>Arabic</li>
+                  <li>English</li>
+                </ul>
               </div>
-
-              <p>
-                AI & Robot Club — Events & Activities Committee
-              </p>
-
-              <p>
-                Programming Club — Marketing & Publishing Committee
-              </p>
             </div>
+          </article>
 
-            <div class="edu-extra">
-              <div class="edu-extra-title">
-                LANGUAGES
-              </div>
-
-              <p>Arabic · English</p>
-            </div>
-
-          </div>
-
-          <div class="cert-card reveal">
-
-            <h3>Certifications</h3>
-
+          <article class="panel reveal">
+            <span class="panel-label">Certifications</span>
             <ul class="cert-list">
-
-              <li>
-                <strong>Introduction to Artificial Intelligence</strong>
-                — KAUST Academy
-              </li>
-
-              <li>
-                <strong>Advanced Artificial Intelligence</strong>
-                — KAUST Academy
-              </li>
-
-              <li>
-                <strong>Artificial Intelligence Fundamentals</strong>
-                — IBM
-              </li>
-
-              <li>
-                <strong>Python</strong>
-                — University of Michigan / Coursera
-              </li>
-
+              <li><span>Introduction to Artificial Intelligence</span><span class="issuer">KAUST Academy</span></li>
+              <li><span>Advanced Artificial Intelligence</span><span class="issuer">KAUST Academy</span></li>
+              <li><span>Artificial Intelligence Fundamentals</span><span class="issuer">IBM</span></li>
+              <li><span>Python</span><span class="issuer">University of Michigan / Coursera</span></li>
             </ul>
-
-          </div>
-
+          </article>
         </div>
-
       </div>
-
     </section>
 
-    <!-- ===================== AVAILABILITY ===================== -->
+    <!-- ===================== CONTACT ===================== -->
 
-    <section class="availability-section">
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-grid">
 
-      <div class="wrap">
-
-        <div class="availability-box reveal">
-
-          <div class="availability-label">
-            Available for opportunities
-          </div>
-
-          <h2>
-            Need someone to help turn an AI idea into a working project?
-          </h2>
-
-          <p>
-            I'm available to contribute to AI and software projects,
-            including remote work, freelance projects and
-            collaborative opportunities. I can work across the pipeline
-            from data preparation and model development to backend APIs
-            and application integration.
+        <div class="reveal">
+          <span class="eyebrow eyebrow-accent section-index">06 / Contact</span>
+          <h2 class="contact-title" id="contact-title">Have a project in mind? <span>Let's build it.</span></h2>
+          <p class="contact-copy">
+            I'm available to contribute to AI and software projects, including
+            part-time and remote work, freelance projects and collaborations — from data
+            preparation and model development to backend APIs and application
+            integration.
           </p>
-
-          <div class="work-types">
-            <span>Remote Work</span>
-            <span>AI Projects</span>
-            <span>Freelance</span>
-            <span>Collaborations</span>
-            <span>Machine Learning</span>
+          <div class="badges work-types">
+            <span class="badge">Part-time</span>
+            <span class="badge">Remote work</span>
+            <span class="badge">AI projects</span>
+            <span class="badge">Freelance</span>
+            <span class="badge">Collaborations</span>
+            <span class="badge">Machine learning</span>
           </div>
 
-          <div class="hero-links">
-            <a
-              class="btn primary"
-              href="#contact"
-            >
-              Start a conversation ↗︎
-            </a>
-          </div>
-
+          <ul class="contact-links">
+            <li>
+              <a href="mailto:batoolashour6@gmail.com">
+                <span class="label">Email</span>
+                <span class="value">batoolashour6@gmail.com</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/batoolashour" target="_blank" rel="noopener noreferrer">
+                <span class="label">LinkedIn</span>
+                <span class="value">in/batoolashour</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/BatoolAshour" target="_blank" rel="noopener noreferrer">
+                <span class="label">GitHub</span>
+                <span class="value">BatoolAshour</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg>
+              </a>
+            </li>
+          </ul>
         </div>
 
-      </div>
+        <form class="contact-form reveal" id="contact-form" action="https://formspree.io/f/mjyvpovg" method="POST">
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="_subject" required />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <div class="form-foot">
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            <button type="submit" class="btn btn-primary">
+              Send message
+              <svg class="icon arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </button>
+          </div>
+        </form>
 
+      </div>
     </section>
 
   </main>
 
-  <!-- ===================== CONTACT ===================== -->
-
-  <footer id="contact">
-
-    <div class="wrap">
-
-      <div class="section-num reveal">
-        06 / CONTACT
-      </div>
-
-      <h2 class="contact-heading reveal">
-        Have a project in mind?
-        <span>Let's build it.</span>
-      </h2>
-
-      <p class="contact-sub reveal">
-        Whether it's an AI project, remote role or
-        collaboration, feel free to reach out.
-      </p>
-
-      <div class="contact-layout">
-
-        <div class="contact-links reveal">
-
-          <a href="mailto:batoolashour6@gmail.com">
-            <span>Email</span>
-            <span>batoolashour6@gmail.com ↗︎</span>
-          </a>
-
-          <a
-            href="https://linkedin.com/in/batoolashour"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span>LinkedIn</span>
-            <span>batoolashour ↗︎</span>
-          </a>
-
-          <a
-            href="https://github.com/BatoolAshour"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span>GitHub</span>
-            <span>BatoolAshour ↗︎</span>
-          </a>
-
-        </div>
-
-        <!--
-          IMPORTANT:
-          Replace YOUR_FORM_ID below with your actual Formspree form ID
-          (from your Formspree dashboard, e.g. "mzbnwxyz").
-        -->
-
-        <form
-          class="contact-form reveal"
-          id="contactForm"
-          action="https://formspree.io/f/mjyvpovg"
-          method="POST"
-        >
-
-          <div class="field">
-            <label for="name">YOUR NAME</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              autocomplete="name"
-              required
-            />
-          </div>
-
-          <div class="field">
-            <label for="email">YOUR EMAIL</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              autocomplete="email"
-              required
-            />
-          </div>
-
-          <div class="field">
-            <label for="subject">SUBJECT</label>
-            <input
-              type="text"
-              id="subject"
-              name="_subject"
-              required
-            />
-          </div>
-
-          <div class="field">
-            <label for="message">MESSAGE</label>
-            <textarea
-              id="message"
-              name="message"
-              required
-            ></textarea>
-          </div>
-
-          <button type="submit" class="submit-btn">
-            Send message →
-          </button>
-
-          <div
-            class="form-status"
-            id="formStatus"
-            aria-live="polite"
-          ></div>
-
-        </form>
-
-      </div>
-
-      <div class="footer-bottom">
-        <span>Batool Ashour · AI Engineer</span>
-        <span>Eastern Province, Saudi Arabia · Open to Remote</span>
-      </div>
-
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© <span data-year>2026</span> Batool Ashour · AI Engineer · Eastern Province, Saudi Arabia</span>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#work">Work</a>
+        <a href="https://github.com/BatoolAshour" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://linkedin.com/in/batoolashour" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="#top">Back to top ↑</a>
+      </nav>
     </div>
-
   </footer>
 
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightboxClose">Close ✕</button>
-    <img id="lightboxImg" src="" alt="Enlarged project image" />
-  </div>
+  <!-- Shared lightbox -->
+  <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
+    <div class="lightbox-bar">
+      <span class="lightbox-count"></span>
+      <button class="lightbox-btn lightbox-close" type="button" aria-label="Close image viewer">
+        <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </div>
+    <div class="lightbox-stage">
+      <img alt="" />
+      <button class="lightbox-btn lightbox-prev" type="button" aria-label="Previous image">
+        <svg class="icon" aria-hidden="true"><use href="#i-chev-left"/></svg>
+      </button>
+      <button class="lightbox-btn lightbox-next" type="button" aria-label="Next image">
+        <svg class="icon" aria-hidden="true"><use href="#i-chev-right"/></svg>
+      </button>
+    </div>
+    <p class="lightbox-caption"></p>
+  </dialog>
 
-  <script>
-    /* ========================================
-       SCROLL REVEAL
-    ======================================== */
-
-    const revealElements = document.querySelectorAll(".reveal");
-
-    if ("IntersectionObserver" in window) {
-      const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.12,
-          rootMargin: "0px 0px -40px 0px"
-        }
-      );
-
-      revealElements.forEach((element, index) => {
-        element.style.transitionDelay =
-          `${Math.min((index % 4) * 70, 210)}ms`;
-
-        revealObserver.observe(element);
-      });
-    } else {
-      revealElements.forEach((element) => {
-        element.classList.add("visible");
-      });
-    }
-
-    /* ========================================
-       CONTACT FORM
-    ======================================== */
-
-    const form = document.getElementById("contactForm");
-    const status = document.getElementById("formStatus");
-
-    if (form) {
-      form.addEventListener("submit", async (event) => {
-
-        event.preventDefault();
-
-        const button = form.querySelector(".submit-btn");
-
-        button.disabled = true;
-        button.textContent = "Sending...";
-
-        status.textContent = "Sending your message...";
-        status.className = "form-status";
-
-        try {
-
-          const response = await fetch(form.action, {
-            method: "POST",
-            body: new FormData(form),
-            headers: {
-              Accept: "application/json"
-            }
-          });
-
-          if (response.ok) {
-
-            status.textContent =
-              "Message sent — thank you! I'll get back to you soon.";
-
-            status.className = "form-status ok";
-
-            form.reset();
-
-          } else {
-
-            status.textContent =
-              "Something went wrong. Please email me directly instead.";
-
-            status.className = "form-status err";
-          }
-
-        } catch (error) {
-
-          status.textContent =
-            "Something went wrong. Please email me directly instead.";
-
-          status.className = "form-status err";
-        }
-
-        button.disabled = false;
-        button.textContent = "Send message →";
-
-      });
-    }
-
-    /* ========================================
-       SUBTLE PROJECT CARD MOTION
-    ======================================== */
-
-    const cards = document.querySelectorAll(
-      ".project, .service-card"
-    );
-
-    const canHover =
-      window.matchMedia("(hover: hover)").matches &&
-      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (canHover) {
-
-      cards.forEach((card) => {
-
-        card.addEventListener("mousemove", (event) => {
-
-          const rect = card.getBoundingClientRect();
-
-          const x =
-            event.clientX - rect.left;
-
-          const y =
-            event.clientY - rect.top;
-
-          const centerX =
-            rect.width / 2;
-
-          const centerY =
-            rect.height / 2;
-
-          const rotateX =
-            ((y - centerY) / centerY) * -1.5;
-
-          const rotateY =
-            ((x - centerX) / centerX) * 1.5;
-
-          card.style.transform =
-            `perspective(900px)
-             rotateX(${rotateX}deg)
-             rotateY(${rotateY}deg)
-             translateY(-6px)`;
-
-        });
-
-        card.addEventListener("mouseleave", () => {
-          card.style.transform = "";
-        });
-
-      });
-
-    }
-
-    // ===== Lightbox for project images =====
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightboxImg");
-    const lightboxClose = document.getElementById("lightboxClose");
-
-    document.querySelectorAll(".project-img-row img").forEach((img) => {
-      img.addEventListener("click", () => {
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightbox.classList.add("active");
-      });
-    });
-
-    function closeLightbox() {
-      lightbox.classList.remove("active");
-      lightboxImg.src = "";
-    }
-
-    lightboxClose.addEventListener("click", closeLightbox);
-
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeLightbox();
-    });
-  </script>
-
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>

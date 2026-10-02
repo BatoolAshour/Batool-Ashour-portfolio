@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Burhan — AI research intelligence platform · Batool Ashour</title>
+  <meta
+    name="description"
+    content="Burhan turns research papers into an evidence-backed Research Digital Twin: PDF ingestion, LLM-based structured extraction, a scientific knowledge graph, cross-paper analysis, research gap discovery and grounded Q&A."
+  />
+  <meta name="theme-color" content="#0a0c10" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Burhan — AI-powered research intelligence platform" />
+  <meta property="og:description" content="Case study by Batool Ashour." />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%230a0c10%27/%3E%3Ctext x=%2716%27 y=%2721%27 font-family=%27monospace%27 font-size=%2712%27 fill=%27%23e3b25a%27 text-anchor=%27middle%27%3EBA%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/site.css" />
+</head>
+
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-arrow-ne" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></symbol>
+    <symbol id="i-zoom" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-chev-left" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+    <symbol id="i-chev-right" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  </svg>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Primary">
+      <a href="../../" class="brand" aria-label="Batool Ashour — home">
+        <span class="brand-mark" aria-hidden="true">BA</span>
+        Batool Ashour
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+
+      <div class="nav-links" id="nav-menu">
+        <a href="../../#work" aria-current="page" class="is-active">Work</a>
+        <a href="../../#experience">Experience</a>
+        <a href="../../#skills">Skills</a>
+        <a href="../../#education">Education</a>
+        <a href="../../#contact" class="btn btn-sm nav-cta">Get in touch</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== HERO ===================== -->
+
+    <section class="cs-hero">
+      <div class="wrap hero-enter">
+        <a class="breadcrumb" href="../../#work">
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>
+          All projects
+        </a>
+
+        <h1 class="cs-title"><span class="line"><span>Burhan <span class="ar" lang="ar">بُرهان</span></span></span></h1>
+        <p class="cs-kicker">AI-powered research intelligence platform</p>
+
+        <p class="cs-intro">
+          Burhan reads a set of research papers, extracts structured scientific
+          knowledge from each one and connects it into a
+          <strong>Research Digital Twin</strong> — a graph of papers, methods,
+          datasets, metrics, findings, limitations and research gaps. Instead of
+          answering questions about one PDF at a time, it reasons across papers
+          to show what they collectively report, which limitations they share
+          and where the gaps are.
+        </p>
+
+        <dl class="cs-facts">
+          <div><dt>My role</dt><dd>Backend &amp; System Integration</dd></div>
+          <div><dt>Team</dt><dd>5 members</dd></div>
+          <div><dt>Context</dt><dd>FARQ Hackathon · 2026</dd></div>
+          <div><dt>Status</dt><dd>MVP prototype</dd></div>
+        </dl>
+
+        <div class="cs-actions">
+          <a class="btn btn-primary" href="#screens">
+            See the screens
+            <svg class="icon arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap cs-cover reveal" data-gallery>
+      <div class="browser" data-tilt>
+        <div class="browser-bar">
+          <span class="window-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="browser-url">burhan · research digital twin</span>
+          <span class="spacer" aria-hidden="true"></span>
+        </div>
+        <button class="browser-view" type="button" aria-label="Enlarge: Research Digital Twin dashboard"
+          data-full="../../assets/projects/burhan/dashboard.webp"
+          data-caption="Research Digital Twin dashboard — counts, knowledge graph and research assistant">
+          <img src="../../assets/projects/burhan/dashboard.webp" width="1600" height="1000"
+            alt="Burhan Research Digital Twin dashboard with summary counts, knowledge graph and research assistant" />
+          <span class="zoom-hint"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg>Enlarge</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===================== PROBLEM ===================== -->
+
+    <section class="cs-section" aria-labelledby="problem-title">
+      <div class="wrap cs-split">
+        <div class="reveal">
+          <span class="eyebrow eyebrow-accent">01</span>
+          <h2 id="problem-title" style="margin-top:10px">The problem</h2>
+        </div>
+        <div class="prose reveal">
+          <p>
+            Researchers don't only need to read papers — they need to understand
+            how a research field behaves <strong>across</strong> many papers.
+            Most research tools optimise individual tasks such as search,
+            summarisation or PDF question answering. They don't build a
+            structured model of the field that grows as new papers are added.
+          </p>
+          <ul class="question-list" aria-label="Questions researchers need answered">
+            <li>Which methods are used, compared and improved?</li>
+            <li>Which datasets and metrics define the field?</li>
+            <li>Which findings are supported by evidence?</li>
+            <li>Which claims contradict each other?</li>
+            <li>Which limitations repeat across studies?</li>
+            <li>Which research gaps are actionable?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== HOW IT WORKS ===================== -->
+
+    <section class="cs-section" aria-labelledby="arch-title">
+      <div class="wrap">
+        <div class="cs-split">
+          <div class="reveal">
+            <span class="eyebrow eyebrow-accent">02</span>
+            <h2 id="arch-title" style="margin-top:10px">How it works</h2>
+          </div>
+          <div class="prose reveal">
+            <p>
+              A staged pipeline in a FastAPI backend. Each run takes five PDFs
+              from one domain and produces a Research Digital Twin that the
+              Next.js frontend renders as a dashboard and interactive graph.
+            </p>
+          </div>
+        </div>
+
+        <dl class="stat-row stat-row-lg reveal" aria-label="Burhan by the numbers">
+          <div><dt>PDFs per run</dt><dd data-count="5">5</dd></div>
+          <div><dt>Fields extracted per paper</dt><dd data-count="9">9</dd></div>
+          <div><dt>Graph node types</dt><dd data-count="7">7</dd></div>
+          <div><dt>Relationship types</dt><dd data-count="7">7</dd></div>
+        </dl>
+
+        <ol class="arch" style="margin-top:40px">
+          <li class="reveal">
+            <h3>Ingest &amp; parse</h3>
+            <p>PDFs are stored per run and parsed with Docling when available, falling back to PyMuPDF. Title, authors, year, abstract and sections are detected.</p>
+            <p class="tech">FastAPI · PyMuPDF · Docling</p>
+          </li>
+          <li class="reveal">
+            <h3>Extract structured knowledge</h3>
+            <p>An LLM in JSON mode extracts problem, objective, method, dataset, metrics, findings, limitations, future work and evidence quotes — validated against Pydantic schemas, with a heuristic fallback.</p>
+            <p class="tech">Groq · gpt-oss-120b · Pydantic</p>
+          </li>
+          <li class="reveal">
+            <h3>Build the twin</h3>
+            <p>Extracted entities become typed graph nodes and relationships. Methods, datasets and metrics are merged across papers so shared concepts connect.</p>
+            <p class="tech">Knowledge graph · Neo4j (optional)</p>
+          </li>
+          <li class="reveal">
+            <h3>Reason across papers</h3>
+            <p>Cross-paper analysis ranks the most common methods, datasets and metrics, groups repeated limitation themes and checks findings for contradictions.</p>
+            <p class="tech">Cross-paper analysis</p>
+          </li>
+          <li class="reveal">
+            <h3>Discover research gaps</h3>
+            <p>Limitations that recur across papers are aggregated into an evidence-backed research gap, linked to its supporting papers and source quotes.</p>
+            <p class="tech">Gap detection</p>
+          </li>
+          <li class="reveal">
+            <h3>Answer with evidence</h3>
+            <p>Questions retrieve matching findings, quotes and limitations; the LLM answers citing papers, and a confidence score marks the answer accepted, needing more evidence, or insufficient.</p>
+            <p class="tech">Grounded Q&amp;A · confidence scoring</p>
+          </li>
+        </ol>
+
+        <div class="graph-schema reveal" aria-label="Knowledge graph schema">
+          <span><b>Paper</b> <i>USES</i> Method</span>
+          <span><b>Paper</b> <i>EVALUATES</i> Dataset</span>
+          <span><b>Paper</b> <i>REPORTS</i> Metric</span>
+          <span><b>Paper</b> <i>CLAIMS</i> Finding</span>
+          <span><b>Paper</b> <i>STATES</i> Limitation</span>
+          <span><b>Method</b> <i>COMPARES</i> Method</span>
+          <span><b>Paper</b> <i>SUGGESTS</i> ResearchGap</span>
+        </div>
+        <p class="arch-note reveal">
+          Each run is saved as a JSON artifact. PostgreSQL (metadata), Qdrant
+          (evidence vectors) and Neo4j (graph) persistence switch on when configured.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURES ===================== -->
+
+    <section class="cs-section" aria-labelledby="features-title">
+      <div class="wrap">
+        <div class="cs-split" style="margin-bottom:40px">
+          <div class="reveal">
+            <span class="eyebrow eyebrow-accent">03</span>
+            <h2 id="features-title" style="margin-top:10px">Key features</h2>
+          </div>
+          <div class="prose reveal">
+            <p>What the current MVP implements.</p>
+          </div>
+        </div>
+
+        <div class="features reveal">
+          <article class="feature">
+            <h3>Scientific PDF ingestion</h3>
+            <p>Multi-file upload of research papers with page text parsing, metadata detection and section splitting.</p>
+          </article>
+          <article class="feature">
+            <h3>Structured paper extraction</h3>
+            <p>Nine scientific fields per paper, extracted by an LLM and validated with strict Pydantic schemas before entering the twin.</p>
+          </article>
+          <article class="feature">
+            <h3>Scientific knowledge graph</h3>
+            <p>Seven node types and typed relationships, explorable in an interactive React Flow graph with node inspection.</p>
+          </article>
+          <article class="feature">
+            <h3>Cross-paper analysis</h3>
+            <p>Most common methods, datasets and metrics, repeated limitations and contradiction checks across the paper set.</p>
+          </article>
+          <article class="feature">
+            <h3>Research gap discovery</h3>
+            <p>Gaps built from limitations shared by multiple papers, shown with the supporting papers and the evidence behind them.</p>
+          </article>
+          <article class="feature">
+            <h3>Evidence-grounded answers</h3>
+            <p>Answers cite papers and list the evidence retrieved, with a confidence score and validation status.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SCREENS ===================== -->
+
+    <section class="cs-section" id="screens" aria-labelledby="screens-title">
+      <div class="wrap">
+        <div class="cs-split" style="margin-bottom:56px">
+          <div class="reveal">
+            <span class="eyebrow eyebrow-accent">04</span>
+            <h2 id="screens-title" style="margin-top:10px">Screens</h2>
+          </div>
+          <div class="prose reveal">
+            <p>A walk through one run, from upload to the finished twin.</p>
+          </div>
+        </div>
+
+        <div class="gallery" data-gallery>
+
+          <div class="shot reveal">
+            <div class="shot-copy">
+              <span class="step">Step 01</span>
+              <h3>Start from papers</h3>
+              <p>The landing page explains the workflow: extract knowledge, build the graph, identify gaps, compare papers and ask with evidence.</p>
+            </div>
+            <div class="browser">
+              <div class="browser-bar"><span class="window-dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="browser-url">burhan</span><span class="spacer" aria-hidden="true"></span></div>
+              <button class="browser-view" type="button" aria-label="Enlarge: landing page"
+                data-full="../../assets/projects/burhan/landing.webp" data-caption="Landing page">
+                <img src="../../assets/projects/burhan/landing.webp" width="1600" height="1000" loading="lazy" decoding="async"
+                  alt="Burhan landing page: Build a Living Research Digital Twin" />
+                <span class="zoom-hint"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg>Enlarge</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="shot reveal">
+            <div class="shot-copy">
+              <span class="step">Step 02</span>
+              <h3>Upload five PDFs</h3>
+              <p>Drag-and-drop upload for five papers from one focused domain. The run starts once all five are selected.</p>
+            </div>
+            <div class="browser">
+              <div class="browser-bar"><span class="window-dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="browser-url">burhan · upload papers</span><span class="spacer" aria-hidden="true"></span></div>
+              <button class="browser-view" type="button" aria-label="Enlarge: paper upload"
+                data-full="../../assets/projects/burhan/upload.webp" data-caption="Paper upload — five PDFs from one research domain">
+                <img src="../../assets/projects/burhan/upload.webp" width="1600" height="1000" loading="lazy" decoding="async"
+                  alt="Burhan paper upload screen with five selected PDF papers" />
+                <span class="zoom-hint"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg>Enlarge</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="shot reveal">
+            <div class="shot-copy">
+              <span class="step">Step 03</span>
+              <h3>Run the pipeline</h3>
+              <p>Upload, entity extraction, knowledge-graph construction and twin generation, shown as staged progress.</p>
+            </div>
+            <div class="browser">
+              <div class="browser-bar"><span class="window-dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="browser-url">burhan · processing</span><span class="spacer" aria-hidden="true"></span></div>
+              <button class="browser-view" type="button" aria-label="Enlarge: processing pipeline"
+                data-full="../../assets/projects/burhan/processing.webp" data-caption="Processing pipeline — staged progress while the twin is built">
+                <img src="../../assets/projects/burhan/processing.webp" width="1600" height="1000" loading="lazy" decoding="async"
+                  alt="Burhan processing screen showing four pipeline stages and overall progress" />
+                <span class="zoom-hint"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg>Enlarge</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="shot reveal">
+            <div class="shot-copy">
+              <span class="step">Step 04</span>
+              <h3>Explore the knowledge graph</h3>
+              <p>Papers, methods, datasets, metrics, findings and limitations as connected nodes. Selecting a node shows its twin metadata.</p>
+            </div>
+            <div class="browser">
+              <div class="browser-bar"><span class="window-dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="browser-url">burhan · knowledge graph</span><span class="spacer" aria-hidden="true"></span></div>
+              <button class="browser-view" type="button" aria-label="Enlarge: knowledge graph"
+                data-full="../../assets/projects/burhan/knowledge-graph.webp" data-caption="Knowledge graph — typed nodes and relationships rendered with React Flow">
+                <img src="../../assets/projects/burhan/knowledge-graph.webp" width="1200" height="891" loading="lazy" decoding="async"
+                  alt="Burhan knowledge graph view with finding, limitation and metric nodes connected by labelled edges" />
+                <span class="zoom-hint"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg>Enlarge</span>
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <div class="shot-copy reveal" style="max-width:640px;margin-bottom:24px">
+              <span class="step">Step 05</span>
+              <h3>Read the extraction and the gap</h3>
+              <p>A per-paper table of method, dataset, metrics and findings, next to the evidence-backed research gap with its supporting papers and quotes.</p>
+            </div>
+            <div class="shot-pair reveal">
+              <div class="browser">
+                <div class="browser-bar"><span class="window-dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="browser-url">burhan · structured extraction</span><span class="spacer" aria-hidden="true"></span></div>
+                <button class="browser-view" type="button" aria-label="Enlarge: structured extraction"
+                  data-full="../../assets/projects/burhan/structured-extraction.webp" data-caption="Structured extraction — method, dataset, metrics and findings per paper">
+                  <img src="../../assets/projects/burhan/structured-extraction.webp" width="1200" height="1068" loading="lazy" decoding="async"
+                    alt="Structured extraction table listing method, dataset, metrics and findings for each paper" />
+                  <span class="zoom-hint"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg>Enlarge</span>
+                </button>
+              </div>
+              <div class="browser">
+                <div class="browser-bar"><span class="window-dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="browser-url">research gap</span><span class="spacer" aria-hidden="true"></span></div>
+                <button class="browser-view" type="button" aria-label="Enlarge: research gap"
+                  data-full="../../assets/projects/burhan/research-gap.webp" data-caption="Evidence-backed research gap with supporting papers and evidence">
+                  <img src="../../assets/projects/burhan/research-gap.webp" width="800" height="1154" loading="lazy" decoding="async"
+                    alt="Research gap card: need for externally validated and generalizable AI research evidence, with supporting papers and evidence" />
+                  <span class="zoom-hint"><svg class="icon" aria-hidden="true"><use href="#i-zoom"/></svg>Enlarge</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="data-note reveal">
+          Screenshots of the Burhan MVP running locally. The dashboard shows a
+          real run over five papers on machine-learning breast cancer classification.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== TECH STACK ===================== -->
+
+    <section class="cs-section" aria-labelledby="stack-title">
+      <div class="wrap cs-split">
+        <div class="reveal">
+          <span class="eyebrow eyebrow-accent">05</span>
+          <h2 id="stack-title" style="margin-top:10px">Tech stack</h2>
+        </div>
+        <div class="reveal">
+          <table class="stack-table">
+            <tbody>
+              <tr>
+                <th scope="row">Backend</th>
+                <td><div class="badges"><span class="badge">Python</span><span class="badge">FastAPI</span><span class="badge">Uvicorn</span><span class="badge">Pydantic</span><span class="badge">httpx</span></div></td>
+              </tr>
+              <tr>
+                <th scope="row">Parsing</th>
+                <td><div class="badges"><span class="badge">PyMuPDF</span><span class="badge">Docling (optional)</span></div></td>
+              </tr>
+              <tr>
+                <th scope="row">LLM</th>
+                <td><div class="badges"><span class="badge">openai/gpt-oss-120b</span><span class="badge">Groq API</span><span class="badge">JSON mode</span></div></td>
+              </tr>
+              <tr>
+                <th scope="row">Frontend</th>
+                <td><div class="badges"><span class="badge">Next.js</span><span class="badge">React</span><span class="badge">TypeScript</span><span class="badge">Tailwind CSS</span><span class="badge">React Flow</span><span class="badge">Lucide</span></div></td>
+              </tr>
+              <tr>
+                <th scope="row">Storage</th>
+                <td><div class="badges"><span class="badge">JSON artifacts</span><span class="badge">PostgreSQL</span><span class="badge">Qdrant</span><span class="badge">Neo4j</span><span class="badge">Docker Compose</span></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ROLE + TEAM ===================== -->
+
+    <section class="cs-section" aria-labelledby="role-title">
+      <div class="wrap cs-split">
+        <div class="reveal">
+          <span class="eyebrow eyebrow-accent">06</span>
+          <h2 id="role-title" style="margin-top:10px">My role &amp; the team</h2>
+        </div>
+        <div class="prose reveal">
+          <p>
+            Burhan was built by a five-person team for the FARQ Hackathon,
+            mentored by Dr. Muzammil, Assistant Professor of AI at KFUPM.
+            My role on the team was <strong>backend and system integration</strong>.
+          </p>
+          <p>
+            I also fixed the backend startup, Groq LLM integration and the
+            frontend build so the MVP runs end to end — that work is merged
+            into the main branch.
+          </p>
+          <ul class="plain-list" style="margin-top:20px">
+            <li>Farah Almujaljel — Product Lead &amp; Research Twin Architect</li>
+            <li>Aryam Bargash — AI/LLM Engineer</li>
+            <li>Alaa Bughararah — Knowledge Graph &amp; Data Engineer</li>
+            <li>Raneem Bahobail — Frontend, UI/UX &amp; Visualization</li>
+            <li>Batool Ashour — Backend &amp; System Integration</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== NEXT ===================== -->
+
+    <section class="cs-section" aria-labelledby="next-title">
+      <div class="wrap cs-split">
+        <div class="reveal">
+          <span class="eyebrow eyebrow-accent">07</span>
+          <h2 id="next-title" style="margin-top:10px">What's next</h2>
+        </div>
+        <div class="prose reveal">
+          <p>
+            The project's direction is an <strong>agentic</strong> research
+            scientist: dedicated agents for planning, extraction, evidence
+            verification, cross-paper reasoning and gap discovery. On the
+            roadmap — not yet in the MVP:
+          </p>
+          <ul class="feature-list" style="grid-template-columns:1fr">
+            <li>Multi-agent orchestration of the pipeline</li>
+            <li>Semantic embeddings for evidence retrieval</li>
+            <li>Continuous twin updates as new papers are added</li>
+            <li>Richer graph analytics and scholarly data integrations</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <div class="wrap next-project reveal">
+        <a class="breadcrumb" href="../../#work">
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>
+          Back to all projects
+        </a>
+        <a class="btn btn-primary" href="../../#contact">
+          Get in touch
+          <svg class="icon arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" style="margin-top:0">
+    <div class="wrap footer-inner">
+      <span>© <span data-year>2026</span> Batool Ashour · AI Engineer</span>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="../../">Home</a>
+        <a href="../../#contact">Contact</a>
+        <a href="https://github.com/BatoolAshour" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://linkedin.com/in/batoolashour" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </nav>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Image viewer">
+    <div class="lightbox-bar">
+      <span class="lightbox-count"></span>
+      <button class="lightbox-btn lightbox-close" type="button" aria-label="Close image viewer">
+        <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </div>
+    <div class="lightbox-stage">
+      <img alt="" />
+      <button class="lightbox-btn lightbox-prev" type="button" aria-label="Previous image">
+        <svg class="icon" aria-hidden="true"><use href="#i-chev-left"/></svg>
+      </button>
+      <button class="lightbox-btn lightbox-next" type="button" aria-label="Next image">
+        <svg class="icon" aria-hidden="true"><use href="#i-chev-right"/></svg>
+      </button>
+    </div>
+    <p class="lightbox-caption"></p>
+  </dialog>
+
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>
