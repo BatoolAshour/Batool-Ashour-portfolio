@@ -363,7 +363,7 @@
 
   if (finePointer) {
     document
-      .querySelectorAll(".featured, .project-card, .capability, .skill-group, .panel, .feature, .arch li, .contact-form, .timeline-item")
+      .querySelectorAll(".featured, .project-card, .capability, .skill-group, .panel, .feature, .arch li, .contact-form, .timeline-item, .cert-card, .cert-track")
       .forEach((el) => {
         el.classList.add("spotlight");
         el.addEventListener("pointermove", (e) => {
